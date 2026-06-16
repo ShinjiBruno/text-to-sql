@@ -54,7 +54,7 @@ def mainLoop():
             
         print("\n[1/2] Traduzindo comando...")
         try:
-            sql_query = llm.generate_sql(prompt, schema)
+            sql_query = llm.generate_sql_ollama(prompt, schema) #llm.generate_sql(prompt, schema)
             
             if sql_query.upper() == "ERROR":
                 print("Essa pergunta não pode ser respondida com as tabelas disponíveis.")

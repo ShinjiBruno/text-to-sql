@@ -1,0 +1,20 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: always
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - ./ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+
+  # instala qwen2.5-coder
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: ollama_init
+    depends_on:
+      - ollama
+    command: >
+      sh -c "sleep 5 && OLLAMA_HOST=ollama:11434 ollama pull qwen2.5-coder:3b"

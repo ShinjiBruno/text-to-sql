@@ -1,3 +1,4 @@
 openrouter
 python-dotenv
 mysql-connector-python
+ollama
